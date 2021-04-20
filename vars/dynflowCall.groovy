@@ -1,5 +1,13 @@
-def call() {
-    def post = new URL("http://gateway-dacdynflow-dev.k8s-test.orange-sonatel.com/api/build-microservice/builds").openConnection();
+
+static def call() {
+    int statusCode
+    HttpURLConnection connection
+    URL newUrl
+    newUrl = new URL("http://gateway-dacdynflow-dev.k8s-test.orange-sonatel.com/api/build-microservice/builds")
+    connection = (HttpURLConnection) newUrl.openConnection()
+    connection.setRequestMethod("POST")
+    connection.setDoOutput(true)
+    connection.setRequestProperty("Content-Type","application/json")
     def message = '{\n' +
             '    "buildID": "Gateway",\n' +
             '    "projectID": "MID",\n' +
@@ -18,8 +26,6 @@ def call() {
             '    "gitCommit": "THis is a test",\n' +
             '    "gitAuthorName": "Diom 3-4"\n' +
             '}'
-    post.setRequestMethod("POST")
-    post.setDoOutput(true)
-    post.setRequestProperty("Content-Type", "application/json")
-    post.getOutputStream().write(message.getBytes("UTF-8"));
+    connection.setRequestProperty(message)
+    statusCode = connection.responseCode
 }
