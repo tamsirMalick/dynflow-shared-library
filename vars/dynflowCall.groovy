@@ -1,4 +1,8 @@
 def call(String environment) {
+    postJenkinsFileInfo(environment)
+}
+
+def postJenkinsFileInfo(String environment) {
     println "Information du build en cours d'envois..."
     int statusCode
     String postUrl = "http://gateway-dacdynflow-dev.k8s-test.orange-sonatel.com/api/build-microservice/builds"
@@ -19,7 +23,6 @@ def call(String environment) {
         statusCode = connection.responseCode
         println "Connection status code: $statusCode"
         if (statusCode == 200) {
-            println "Authentication succeeded"
             println "Server response:"
             println "-----"
             response = displayServerResponse(connection)
@@ -46,18 +49,14 @@ def call(String environment) {
     return response
 }
 
-def postJenkinsFileInfo(String environment) {
-
-}
-
-def displayServerResponse(HttpURLConnection connection) {
+def displayServerResponse(connection) {
     InputStream is;
     if (connection.getResponseCode() == 200) {
         is = connection.getInputStream();
     } else {
         is = connection.getErrorStream();
     }
-    println "Response Content-Type:" + connection.getContentType()
+    println connection.getContentType()
     if (connection.getContentType().contains("application/json")) {
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
