@@ -8,7 +8,7 @@ static def call() {
     connection.setRequestMethod("POST")
     connection.setDoOutput(true)
     connection.setRequestProperty("Content-Type","application/json")
-    def message = '{\n' +
+    String message = '{\n' +
             '    "buildID": "Gateway",\n' +
             '    "projectID": "MID",\n' +
             '    "groupID": "sn.sonatel.dsi.dac.coe",\n' +
@@ -24,7 +24,7 @@ static def call() {
             '    "gitResume": "12hj",\n' +
             '    "changeAuthor": "Bitty Diouf",\n' +
             '    "gitCommit": "THis is a test",\n' +
-            '    "gitAuthorName": "Diom 3-4"\n' +
+            '    "gitAuthorName": "Diom 3-5"\n' +
             '}'
     connection.setRequestProperty(message)
     statusCode = connection.responseCode
