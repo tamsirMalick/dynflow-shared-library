@@ -26,6 +26,9 @@ static def call() {
             '    "gitCommit": "THis is a test",\n' +
             '    "gitAuthorName": "Diom 3-5"\n' +
             '}'
-    connection.setRequestProperty(message)
+    try(OutputStream os = connection.getOutputStream()) {
+        byte[] input = message.getBytes("utf-8");
+        os.write(input, 0, input.length);
+    }
     statusCode = connection.responseCode
 }
