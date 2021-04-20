@@ -1,5 +1,4 @@
-def call(){
-    def getRC = get.getResponseCode();
+def call() {
     def post = new URL("http://gateway-dacdynflow-dev.k8s-test.orange-sonatel.com/api/build-microservice/builds").openConnection();
     def message = '{\n' +
             '    "buildID": "Gateway",\n' +
