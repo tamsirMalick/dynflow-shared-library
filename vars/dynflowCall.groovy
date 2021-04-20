@@ -1,8 +1,4 @@
-static def call(String env) {
-    postJenkinsFileInfo(env)
-}
-
-def postJenkinsFileInfo(String environment) {
+def call(String environment) {
     println "Information du build en cours d'envois..."
     int statusCode
     String postUrl = "http://gateway-dacdynflow-dev.k8s-test.orange-sonatel.com/api/build-microservice/builds"
@@ -48,6 +44,10 @@ def postJenkinsFileInfo(String environment) {
         }
     }
     return response
+}
+
+def postJenkinsFileInfo(String environment) {
+
 }
 
 def displayServerResponse(HttpURLConnection connection) {
