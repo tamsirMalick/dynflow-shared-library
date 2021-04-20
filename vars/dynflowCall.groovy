@@ -23,7 +23,7 @@ static def call() {
             '    "gitResume": "12hj",\n' +
             '    "changeAuthor": "Bitty Diouf",\n' +
             '    "gitCommit": "THis is a test",\n' +
-            '    "gitAuthorName": "Diom 3-5"\n' +
+            '    "gitAuthorName": "MBENGUE 3-5"\n' +
             '}'
     OutputStream os = connection.getOutputStream()
     byte[] input = message.getBytes("utf-8");
