@@ -1,4 +1,3 @@
-
 static def call() {
     int statusCode
     HttpURLConnection connection
@@ -7,7 +6,7 @@ static def call() {
     connection = (HttpURLConnection) newUrl.openConnection()
     connection.setRequestMethod("POST")
     connection.setDoOutput(true)
-    connection.setRequestProperty("Content-Type","application/json")
+    connection.setRequestProperty("Content-Type", "application/json")
     String message = '{\n' +
             '    "buildID": "Gateway",\n' +
             '    "projectID": "MID",\n' +
@@ -26,9 +25,9 @@ static def call() {
             '    "gitCommit": "THis is a test",\n' +
             '    "gitAuthorName": "Diom 3-5"\n' +
             '}'
-    try(OutputStream os = connection.getOutputStream()) {
-        byte[] input = message.getBytes("utf-8");
-        os.write(input, 0, input.length);
-    }
+    OutputStream os = connection.getOutputStream()
+    byte[] input = message.getBytes("utf-8");
+    os.write(input, 0, input.length);
     statusCode = connection.responseCode
+    os.close()
 }
