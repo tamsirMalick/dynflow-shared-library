@@ -16,7 +16,7 @@ def call() {
             '    "gitResume": "12hj",\n' +
             '    "changeAuthor": "Bitty Diouf",\n' +
             '    "gitCommit": "THis is a test",\n' +
-            '    "gitAuthorName": "Diom"\n' +
+            '    "gitAuthorName": "Diom 3-4"\n' +
             '}'
     post.setRequestMethod("POST")
     post.setDoOutput(true)
