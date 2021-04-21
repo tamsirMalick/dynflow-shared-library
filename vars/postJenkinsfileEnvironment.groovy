@@ -1,11 +1,14 @@
 def call(String environment) {
-    postJenkinsFileInfo(environment)
+	script {
+		postJenkinsFileInfo(environment)
+	}
+    
 }
 
 def postJenkinsFileInfo(String environment) {
     println "Information du build en cours d'envois..."
-    int statusCode
     String postUrl = "http://gateway-dacdynflow-dev.k8s-test.orange-sonatel.com/api/build-microservice/builds"
+    int statusCode
     URL gatewayUrl = new URL(postUrl)
     HttpURLConnection connection = (HttpURLConnection) gatewayUrl.openConnection()
     connection.setRequestMethod("POST")
